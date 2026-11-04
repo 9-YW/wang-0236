@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="山东师范大学尤克里里社 2026 年春季招新网站">
+  <title>尤克里里社 | 把青春弹成歌</title>
+  <style>
+    :root {
+      --ink: #113645;
+      --ink-soft: #365763;
+      --paper: #fffaf0;
+      --cream: #f5ead6;
+      --sun: #f3b84f;
+      --coral: #ef6a5b;
+      --teal: #2eaaa0;
+      --teal-dark: #176d70;
+      --line: rgba(17, 54, 69, 0.16);
+      --shadow: 0 22px 60px rgba(29, 63, 72, 0.15);
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 18%, rgba(243, 184, 79, 0.18), transparent 30rem),
+        radial-gradient(circle at 95% 52%, rgba(46, 170, 160, 0.13), transparent 35rem),
+        var(--paper);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+      line-height: 1.85;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 10px 16px;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 0 0 12px 12px;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      color: #fffaf0;
+      background:
+        linear-gradient(90deg, rgba(7, 37, 49, 0.94) 0%, rgba(7, 37, 49, 0.78) 48%, rgba(7, 37, 49, 0.28) 100%),
+        url("ukulele-club-poster.jpg") center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 180px;
+      background: linear-gradient(transparent, var(--paper));
+      pointer-events: none;
+    }
+
+    .top-nav {
+      position: absolute;
+      top: 24px;
+      right: clamp(20px, 5vw, 76px);
+      z-index: 4;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      max-width: min(760px, 72vw);
+    }
+
+    .top-nav a,
+    .hero-links a {
+      border: 1px solid rgba(255, 250, 240, 0.32);
+      background: rgba(12, 50, 63, 0.48);
+      backdrop-filter: blur(12px);
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .top-nav a {
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus-visible,
+    .hero-links a:hover,
+    .hero-links a:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(255, 250, 240, 0.88);
+      background: rgba(239, 106, 91, 0.84);
+      outline: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 150px 0 210px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: #ffe2a2;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(52px, 8vw, 108px);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-top: 20px;
+      color: #ffca73;
+      font-size: 0.47em;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-lead {
+      max-width: 650px;
+      margin: 34px 0 0;
+      color: rgba(255, 250, 240, 0.88);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.75;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .hero-links a {
+      padding: 11px 17px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .music-button {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 17px;
+      color: var(--paper);
+      border: 1px solid rgba(255, 250, 240, 0.55);
+      border-radius: 999px;
+      background: rgba(17, 54, 69, 0.88);
+      box-shadow: 0 10px 30px rgba(8, 38, 49, 0.24);
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .music-button:hover,
+    .music-button:focus-visible {
+      transform: translateY(-2px);
+      background: var(--coral);
+      outline: none;
+    }
+
+    .music-button.is-playing .music-icon {
+      animation: bounce 700ms ease-in-out infinite alternate;
+    }
+
+    .music-icon {
+      display: inline-grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--sun);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    @keyframes bounce {
+      to {
+        transform: translateY(-3px) rotate(8deg);
+      }
+    }
+
+    main {
+      position: relative;
+      z-index: 3;
+    }
+
+    .section {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 106px 0;
+      scroll-margin-top: 24px;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+      gap: clamp(28px, 6vw, 90px);
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    .section-number {
+      margin: 0 0 12px;
+      color: var(--coral);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .section-summary {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 17px;
+    }
+
+    .prose {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px 52px;
+      color: var(--ink-soft);
+      font-size: 16px;
+    }
+
+    .prose p {
+      margin: 0;
+    }
+
+    .prose .lead {
+      grid-column: 1 / -1;
+      color: var(--ink);
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.7;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .badge {
+      padding: 9px 14px;
+      color: var(--teal-dark);
+      border: 1px solid rgba(46, 170, 160, 0.28);
+      border-radius: 999px;
+      background: rgba(46, 170, 160, 0.08);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .back-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 42px;
+      padding: 10px 15px;
+      color: var(--teal-dark);
+      border: 1px solid rgba(46, 170, 160, 0.3);
+      border-radius: 999px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .back-top:hover,
+    .back-top:focus-visible {
+      color: #fff;
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .schedule-wrap {
+      overflow-x: auto;
+      margin: 38px 0 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    .schedule-table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    .schedule-table .schedule-caption {
+      padding: 25px 20px;
+      color: #fff;
+      background: var(--ink);
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      padding: 18px 16px;
+      border: 1px solid var(--line);
+      vertical-align: middle;
+    }
+
+    .schedule-table thead th {
+      color: #fff;
+      background: var(--teal-dark);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .schedule-table tbody th {
+      color: var(--ink);
+      background: #fff7e7;
+      font-weight: 700;
+    }
+
+    .schedule-table tbody tr:nth-child(even) td {
+      background: rgba(245, 234, 214, 0.36);
+    }
+
+    .same-room {
+      color: #a43f33;
+      background: rgba(239, 106, 91, 0.13) !important;
+      font-weight: 800;
+    }
+
+    .gallery-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card > a {
+      position: relative;
+      display: block;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      transition: transform 600ms cubic-bezier(0.2, 0.72, 0.2, 1);
+    }
+
+    .gallery-card > a:hover img,
+    .gallery-card > a:focus-visible img {
+      transform: scale(1.035);
+    }
+
+    .gallery-card > a::after {
+      content: "点击图片，查看活动介绍  ↗";
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      padding: 10px 14px;
+      color: #fff;
+      border-radius: 999px;
+      background: rgba(17, 54, 69, 0.85);
+      font-size: 13px;
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+    }
+
+    .gallery-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(30px, 6vw, 64px);
+      color: #fffaf0;
+    }
+
+    .gallery-copy h3 {
+      margin: 0 0 18px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.18;
+    }
+
+    .gallery-copy p {
+      margin: 0;
+      color: rgba(255, 250, 240, 0.76);
+    }
+
+    .gallery-copy .detail-link {
+      align-self: flex-start;
+      margin-top: 28px;
+      padding: 11px 16px;
+      color: var(--ink);
+      border-radius: 12px;
+      background: var(--sun);
+      font-weight: 800;
+    }
+
+    .video-card {
+      margin-top: 34px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .video-card__heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 26px;
+      color: #fffaf0;
+    }
+
+    .video-card__heading strong {
+      font-size: 18px;
+    }
+
+    .video-card__heading span {
+      color: rgba(255, 250, 240, 0.62);
+      font-size: 14px;
+    }
+
+    .video-card embed {
+      display: block;
+      width: 100%;
+      min-height: 520px;
+      border: 0;
+      background: #081d25;
+    }
+
+    .stories {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.66fr) minmax(0, 1.34fr);
+      gap: clamp(30px, 6vw, 80px);
+      align-items: start;
+    }
+
+    .story-quote {
+      position: sticky;
+      top: 28px;
+      margin: 0;
+      padding: 32px;
+      color: #fffaf0;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(239, 106, 91, 0.96), rgba(246, 164, 81, 0.9)),
+        var(--coral);
+      box-shadow: var(--shadow);
+    }
+
+    .story-quote::before {
+      content: "“";
+      display: block;
+      margin: -18px 0 8px;
+      font-family: Georgia, serif;
+      font-size: 110px;
+      line-height: 0.8;
+      opacity: 0.55;
+    }
+
+    .story-quote p {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.75;
+    }
+
+    .story-quote footer {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .story-copy {
+      color: var(--ink-soft);
+    }
+
+    .story-copy p {
+      margin: 0 0 20px;
+    }
+
+    .story-copy p:first-child::first-letter {
+      float: left;
+      margin: 8px 10px 0 0;
+      color: var(--coral);
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 0.8;
+    }
+
+    .signup-intro {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 0 0 30px;
+    }
+
+    .signup-intro article {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .signup-intro strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .signup-intro p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .form-shell {
+      padding: clamp(20px, 4vw, 40px);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .signup-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .signup-table th,
+    .signup-table td {
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .signup-table th {
+      width: 190px;
+      color: var(--ink);
+      font-size: 15px;
+      background: #fffaf0;
+    }
+
+    .field,
+    .mini-field,
+    select,
+    textarea {
+      width: 100%;
+      color: var(--ink);
+      border: 1px solid rgba(17, 54, 69, 0.22);
+      border-radius: 11px;
+      background: #fff;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .field,
+    select {
+      min-height: 46px;
+      padding: 10px 13px;
+    }
+
+    textarea {
+      min-height: 150px;
+      padding: 13px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .field:focus,
+    select:focus,
+    textarea:focus,
+    .mini-field:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(46, 170, 160, 0.12);
+      outline: none;
+    }
+
+    .date-fields {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mini-field {
+      width: 88px;
+      min-height: 44px;
+      padding: 9px 11px;
+    }
+
+    .choice-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      padding-top: 7px;
+    }
+
+    .choice-group label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .choice-group input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--teal-dark);
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 24px;
+    }
+
+    .form-actions button {
+      min-width: 132px;
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .submit-button {
+      color: #fff;
+      background: var(--coral);
+    }
+
+    .reset-button {
+      color: var(--ink);
+      background: var(--cream);
+    }
+
+    .form-actions button:hover,
+    .form-actions button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(17, 54, 69, 0.16);
+      outline: none;
+    }
+
+    .form-message {
+      min-height: 28px;
+      margin: 18px 0 0;
+      color: var(--teal-dark);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .site-footer {
+      padding: 42px 20px 54px;
+      color: rgba(255, 250, 240, 0.7);
+      background: var(--ink);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .top-nav {
+        position: static;
+        justify-content: flex-start;
+        max-width: none;
+        padding-top: 92px;
+      }
+
+      .hero-content {
+        padding-top: 36px;
+      }
+
+      .section-heading,
+      .gallery-card,
+      .stories {
+        grid-template-columns: 1fr;
+      }
+
+      .prose {
+        grid-template-columns: 1fr;
+      }
+
+      .story-quote {
+        position: static;
+      }
+
+      .signup-intro {
+        grid-template-columns: 1fr;
+      }
+
+      .video-card embed {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .music-button {
+        top: 14px;
+        left: 14px;
+      }
+
+      .hero-content,
+      .section {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-links a {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .signup-table,
+      .signup-table tbody,
+      .signup-table tr,
+      .signup-table th,
+      .signup-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .signup-table th {
+        padding-bottom: 6px;
+        border-bottom: 0;
+        background: transparent;
+      }
+
+      .signup-table td {
+        padding-top: 4px;
+      }
+
+      .gallery-card > a,
+      .gallery-card img {
+        min-height: 280px;
+      }
+
+      .video-card__heading {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <audio id="bgMusic" src="ukulele-theme.mp3" loop preload="auto"></audio>
+  <button class="music-button" id="musicButton" type="button" aria-pressed="false" aria-label="播放背景音乐">
+    <span class="music-icon" aria-hidden="true">♪</span>
+    <span id="musicLabel">播放背景音乐</span>
+  </button>
+
+  <header class="hero">
+    <nav class="top-nav" aria-label="页面导航">
+      <a href="#about">社团简介</a>
+      <a href="#schedule">活动安排</a>
+      <a href="#gallery">风采展示</a>
+      <a href="#stories">社员故事</a>
+      <a href="#signup">在线报名</a>
+    </nav>
+
+    <div class="hero-content">
+      <p class="eyebrow">Ukulele Club · 2026 Spring</p>
+      <h1>把青春<br>弹成歌<span>尤克里里社 2026 春季招新</span></h1>
+      <p class="hero-lead">四根弦不设门槛，一把琴就是一场相遇。无论你从未摸过乐器，还是已经能够登台独奏，这里都有一把椅子、一段旋律和一群愿意陪你慢慢练习的人。</p>
+      <div class="hero-links">
+        <a href="#about">了解社团</a>
+        <a href="#schedule">查看活动</a>
+        <a href="#gallery">看看现场</a>
+        <a href="#stories">读社员故事</a>
+        <a href="#signup">立即报名</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section" id="about">
+      <div class="section-heading">
+        <div>
+          <p class="section-number">01 / About Us</p>
+          <h2>一把小琴，<br>打开一片大舞台</h2>
+        </div>
+        <p class="section-summary">尤克里里社是一个以演奏、教学与交流为核心的校园音乐社团。我们相信音乐不只属于天赋出众的人，也属于每一个愿意在放学后留下来多练十分钟的人。</p>
+      </div>
+
+      <div class="prose">
+        <p class="lead">傍晚六点，教学楼的灯开始一层层亮起，走廊尽头的活动室里传来轻轻的扫弦声。那是一天课程结束后最令人期待的前奏：有人刚学会第一个和弦，有人正在为校园晚会排练，还有人只是带着新买的琴来听一听。尤克里里社的日常，就在这样松弛而真诚的相聚中展开。</p>
+        <p>社团成立于校园里一群音乐爱好者对“轻松演奏”的共同想象。我们不要求成员拥有多年乐器基础，也不把考级和比赛成绩作为加入条件。对初学者，我们会从怎样抱琴、调弦、按弦和认识四线谱讲起，用简单歌曲帮助大家建立节奏感；对已经有基础的成员，我们鼓励尝试指弹、弹唱、合奏编配与舞台表达，并为愿意进一步探索音乐制作、拍摄和活动策划的同学提供实践空间。</p>
+        <p>每周的常规活动分为基础课堂、自由练习和交流分享三个部分。基础课堂重视动作规范与聆听习惯，避免只追求“把音弹出来”而忽略音色和节拍；自由练习采用小组互助方式，让新成员不必独自面对陌生和弦；交流分享则邀请不同年级的成员展示最近练习的曲子，或者一起拆解喜欢的音乐作品。我们希望每个人在这里获得的不仅是一项技能，更是一种能长期陪伴自己的表达方式。</p>
+        <p>除了每周练习，社团会参与校园迎新、社团文化节、草坪音乐会和公益演出。一次完整的演出并不只是台上的五分钟，它包含选曲、排练、声部配合、舞台走位、设备测试与临场沟通。很多同学第一次承担统筹或主持工作时会紧张，但当灯光亮起、熟悉的旋律被观众接住，那些反复修改的表格和一次次走台都会变成很具体的成就感。</p>
+        <p>我们尤其珍视社团里“互相托住”的氛围。弹错时，不会有人嘲笑；节奏慢一点，也不会被催促。面对比较复杂的曲目，大家会主动拆分小节，录下示范视频，约在空闲时间一起练习。有人擅长听辨和弦，有人善于做谱，有人负责拍摄和剪辑，还有人总能记得在排练结束后提醒大家关灯关窗。不同能力在这里彼此补位，最终组成一个真正可以共同完成作品的团队。</p>
+        <p>如果你正在寻找一个不必完美就能开始的地方，尤克里里社愿意成为你的第一站。你可以带着零基础的好奇心来，也可以带着已经练熟的曲目来；可以只想在周末弹几首歌，也可以希望有一天站上更大的舞台。四根弦能演奏的旋律有限，但每个人加入之后，社团的故事就会多出一种新的节奏。我们期待在下一个傍晚，听见属于你的那一声和弦。</p>
+        <p>面对新成员，社团会建立一对一陪伴机制。入社第一周，老成员会帮助完成调音和基础姿势检查；第一个月，大家共同学习一首难度适中的合奏曲；学期中段，再根据兴趣组成弹唱、指弹、尤克里里与打击乐融合等不同方向的小组。这样的安排让每个人既能得到必要的指导，也保留自主探索的空间。我们不会把所有人训练成同一种演奏者，而是希望大家在基础扎实之后，逐渐找到最适合自己的声音。</p>
+      </div>
+
+      <div class="badge-row" aria-label="社团特色">
+        <span class="badge">零基础友好</span>
+        <span class="badge">每周固定练习</span>
+        <span class="badge">校内演出机会</span>
+        <span class="badge">小组互助成长</span>
+        <span class="badge">分享与交流</span>
+      </div>
+      <a class="back-top" href="#top" aria-label="返回页面顶部">↑ 返回顶部</a>
+    </section>
+
+    <section class="section" id="schedule">
+      <div class="section-heading">
+        <div>
+          <p class="section-number">02 / Schedule</p>
+          <h2>一起排练，<br>一起把歌完成</h2>
+        </div>
+        <p class="section-summary">活动安排兼顾入门、合奏与舞台实践。课程会根据成员基础灵活调整，所有正式活动都会提前在社团群发布提醒。</p>
+      </div>
+
+      <div class="schedule-wrap">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="schedule-caption" scope="colgroup" colspan="4">尤克里里社 2026 年春季学期活动安排表</th>
+            </tr>
+            <tr>
+              <th scope="col">日期</th>
+              <th scope="col">时间</th>
+              <th scope="col">活动内容</th>
+              <th scope="col">地点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" rowspan="2">3 月 14 日</th>
+              <td>14:00—15:30</td>
+              <td>新成员见面会</td>
+              <td class="same-room" rowspan="2">A302 音乐教室</td>
+            </tr>
+            <tr>
+              <td>15:45—17:00</td>
+              <td>尤克里里基础教学公开课</td>
+            </tr>
+            <tr>
+              <th scope="row">3 月 21 日</th>
+              <td>18:30—20:00</td>
+              <td>四和弦弹唱工作坊</td>
+              <td>大学生活动中心 204</td>
+            </tr>
+            <tr>
+              <th scope="row">3 月 28 日</th>
+              <td>18:30—20:30</td>
+              <td>第一次小组合奏排练</td>
+              <td>A302 音乐教室</td>
+            </tr>
+            <tr>
+              <th scope="row">4 月 11 日</th>
+              <td>15:00—17:00</td>
+              <td>草坪音乐分享会</td>
+              <td>图书馆前草坪</td>
+            </tr>
+            <tr>
+              <th scope="row">4 月 25 日</th>
+              <td>18:30—20:30</td>
+              <td>节奏、扫弦与舞台表现专题课</td>
+              <td>大学生活动中心 204</td>
+            </tr>
+            <tr>
+              <th scope="row">5 月 9 日</th>
+              <td>15:00—17:30</td>
+              <td>春季成果音乐会彩排</td>
+              <td>大学生活动中心报告厅</td>
+            </tr>
+            <tr>
+              <th scope="row">5 月 16 日</th>
+              <td>19:00—21:00</td>
+              <td>“四弦上的春天”成果音乐会</td>
+              <td>大学生活动中心报告厅</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <p class="lead">第一次见面会与基础教学公开课安排在同一间教室，方便新同学熟悉环境后直接进入学习环节，也为陪同前来的朋友保留旁听席位。</p>
+        <p>每次活动开始前十五分钟开放签到与自由调音。没有乐器的同学可以使用社团公共琴，但需要提前登记；自带乐器的成员请准备备用拨片和背带。基础课程建议穿便于活动、不会遮挡手部的服装，活动现场提供饮用水与基础维修工具。</p>
+        <p>排练以小组为单位推进。每个小组会共同确定一首曲目，并根据成员能力分配主唱、扫弦、分解和弦、铃鼓或卡宏等部分。遇到课程冲突时，小组可以自行增加线上交流或短时练习，但正式合排仍需保证到场人数，以便及时处理节奏衔接与声部平衡。</p>
+        <p>活动全程强调安全与公共空间礼仪。使用设备前需要征得负责人同意，离开教室时请恢复桌椅、关闭电源并妥善归还公共乐器。若遇到天气变化或场地调整，社团将至少提前一天在群内通知。我们期待每个人都能在守约、尊重和彼此关照的氛围中享受音乐。</p>
+        <p>学期计划会保留一定弹性。考试周、节假日或学校大型活动可能影响原有安排，负责人会综合场地、成员时间和准备进度及时调整，并在群内同步更新后的日期。每次正式活动前，大家都会收到包含签到时间、携带物品和练习重点的提醒。临时无法到场的成员应尽量提前请假，并查看小组记录的排练内容；涉及合奏声部的曲目，还会补充节奏示范和分段音频，方便大家按照自己的进度补齐。</p>
+        <p>活动记录由不同的成员轮值完成。有人负责签到与设备清单，有人整理课堂要点和练习任务，也有人拍下排练片段供小组复盘。这样做的目的不是增加负担，而是让每次相聚都能留下可回看的线索。下一次练习开始前，负责人会先用十分钟回应上次留下的问题，再根据大家的掌握情况决定继续巩固还是进入新内容。新成员如果对某个动作感到困难，可以当场提出，也可以课后单独约一次慢速示范。</p>
+        <p>从零开始的同学会先完成“第一次完整演奏”，再逐步尝试与节拍器合作、和伙伴交换声部，最后参与小型合奏。已经具备基础的成员则可以承担领奏、编配或带练任务，把自己的经验拆成其他人听得懂的方法。每月的分享环节没有排名，也不会用完成速度评价成员。我们更重视一个人是否愿意倾听、是否能在出错后重新回到节拍，以及是否愿意为集体留下自己的那份认真。</p>
+      </div>
+      <a class="back-top" href="#top" aria-label="返回页面顶部">↑ 返回顶部</a>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="section-heading">
+        <div>
+          <p class="section-number">03 / Gallery</p>
+          <h2>灯亮起来，<br>让四弦发声</h2>
+        </div>
+        <p class="section-summary">照片记录的是某个瞬间，真正动人的部分是大家一起练习、互相等待并最终完成演出的过程。点击图片可以阅读本次风采展示活动的详细介绍。</p>
+      </div>
+
+      <div class="gallery-card">
+        <a href="club_intro.html" aria-label="点击查看尤克里里社日常演奏活动的详细介绍">
+          <img src="ukulele-club-poster.jpg" alt="尤克里里社成员在暖色灯光下共同演奏的社团风采插图">
+        </a>
+        <div class="gallery-copy">
+          <h3>周末小舞台<br>把日常练成现场</h3>
+          <p>暖色灯光、海风般的节奏、几把颜色不同的尤克里里。我们围成一个弧线，从最熟悉的和弦进入，让观众听到的不只是曲子，也是成员之间默契回应、共同呼吸的时刻。</p>
+          <a class="detail-link" href="club_intro.html">查看活动介绍 →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-card__heading">
+          <strong>社团风采短片</strong>
+          <span>由社团海报与日常演奏画面制作 · MP4 · 约 5 秒</span>
+        </div>
+        <embed src="ukulele-club.mp4" type="video/mp4" title="尤克里里社风采视频" aria-label="尤克里里社风采视频">
+      </div>
+
+      <div class="prose" style="margin-top: 34px;">
+        <p class="lead">风采展示不是“最厉害的人”的专场，而是所有人共同完成的记录：有人第一次完整弹完一首歌，有人第一次拿起相机，有人第一次在陌生人面前开口唱歌。</p>
+        <p>社团会把排练、路演和音乐会中的片段整理成影像档案。每次拍摄前，负责人会征求入镜成员意见；使用他人的照片或视频时，也会注明用途并尊重本人意愿。影像不只是宣传材料，更是大家回看进步、保存共同记忆的方式。</p>
+        <p>在舞台之外，很多风景同样值得被看见：午后草坪上躺着练习谱子的背包，窗边一排等待调音的琴，彩排结束后终于合上的笔记本，以及散场时仍有人轻声哼唱的副歌。这些细节共同构成社团的气质——轻盈、认真、有耐心，也让每一位新成员都能感受到自己正在被这个集体看见。</p>
+        <p>照片和短片会在活动结束后统一整理，按照活动名称、日期和参与成员归档。负责影像的同学会优先保留自然发生的交流，而不是要求大家重复摆出整齐的姿势。画面里可能有按错和弦时相视一笑的瞬间，也可能有后台核对线材、为同伴递水、在台阶上分一块蛋糕的细节。这些片段与正式演出同样重要，因为它们让新成员看到：一场活动由许多看似普通的小事共同托住，每个人都可以找到适合自己的参与方式。</p>
+        <p>发布之前，社团会对画面和文字进行一次复核，确认没有误用姓名、联系方式或不愿公开的个人信息。如果成员希望撤下某张照片，可以直接联系负责人处理。公开页面只展示经过同意并适合传播的内容，内部复盘版本则仅保存在社团的共享空间中。我们希望影像记录既能呈现音乐现场的温度，也能让被拍摄者感到安心，让“被看见”建立在尊重与信任之上。</p>
+        <p>每次风采展示都会设置一个明确主题。迎新季关注第一次相遇，春季音乐会关注共同完成一首作品，毕业季则会邀请老成员把曾经练习的曲目重新带回舞台。围绕主题，大家会一起挑选画面、写下简短说明，再决定哪些内容适合放进招新网页、哪些留作学期纪念。参与整理的过程本身也是一次回顾：原来那个连调音都手忙脚乱的新人，已经可以在彩排时提醒伙伴检查节拍；原来只敢坐在角落旁听的人，也已经能在草坪上自然地接过主唱。</p>
+        <p>这些作品最终会回到社团与观众之间，成为下一次相遇的邀请。也许有人因为一段五秒的短片停下脚步，也许有人认出照片里熟悉的教室，决定来听一次公开课。无论契机是什么，我们希望呈现出的社团不是遥不可及的“舞台高光”，而是一群普通学生用固定练习、耐心沟通和彼此鼓励换来的真实成长。若你愿意加入，未来的照片里也会留下属于你的琴、你的笑声，以及你认真回应节拍的那一刻。</p>
+      </div>
+      <a class="back-top" href="#top" aria-label="返回页面顶部">↑ 返回顶部</a>
+    </section>
+
+    <section class="section" id="stories">
+      <div class="section-heading">
+        <div>
+          <p class="section-number">04 / Member Stories</p>
+          <h2>成长不是独奏，<br>是被听见的回声</h2>
+        </div>
+        <p class="section-summary">每位成员都有属于自己的入社时刻。乐器只是入口，真正留下人的，是一起度过的时间、被理解的紧张和逐渐建立起来的自信。</p>
+      </div>
+
+      <div class="stories">
+        <blockquote class="story-quote">
+          <p>我原本以为自己五音不全，后来才发现，音乐最先教会我的不是唱得准，而是允许自己从笨拙开始。</p>
+          <footer>—— 一位加入社团半年后的新成员</footer>
+        </blockquote>
+
+        <div class="story-copy">
+          <p>林同学第一次来到活动室时，把琴包放在门口，站在人群最外侧看了整整一节课。她说自己小时候参加过合唱团，却因为一次跑调被同学笑过，从那以后很少在人前唱歌。那天课程结束时，学长只递给她一张写了四个和弦的纸，说：“不用先唱，你试试让琴替你说话。”接下来的两周，她每天在宿舍熄灯前练二十分钟。手指出茧，和弦也常常切换不及时，但当她第一次完整弹出一段旋律，室友从床上探出头说“还挺好听”，她忽然发现，被评价并不可怕，真正让她害怕的是从未允许自己开始。</p>
+          <p>后来社团准备草坪音乐分享会，小组缺一位负责节奏的成员。林同学没有报名表演，而是主动承担开场前的设备检查。音乐会开始前十分钟，主唱因为紧张一直找不到合适的起音，她坐在旁边，用很轻的扫弦带着对方数拍。两个人终于在第一束灯光里对齐。表演结束后，主唱说：“幸好有你。”那一刻，她意识到参与并不只有站在中央一种形式。把设备接好、把节拍稳住、在别人慌乱时递上一杯水，同样是演出能够发生的重要原因。</p>
+          <p>现在的她已经开始尝试弹唱，并且会在新生课堂上给刚开始学琴的人讲自己第一次按不响和弦的经历。她不再把“会不会”当作一道门槛，而更关心“今天有没有比昨天多听清一点”。她说，尤克里里给她的最大礼物并不是学会了几首歌，而是让她重新理解成长：成长不是突然变得无所不能，而是在一次次不熟练之后，仍然愿意坐下来继续练习。</p>
+          <p>另一位成员周同学则在这里第一次接触活动策划。他原本只想弹琴，后来因为社团参与迎新演出，被安排负责设备清单。最初他觉得这只是简单的表格工作，真正开始后才明白，一支麦克风、一根转接线、一个备用电池都可能左右一场演出。为了减少失误，他跟着负责人逐项核对场地电源、监听方向、候场顺序与紧急联系人，还把每次演出的问题整理成复盘记录。等到第二次负责时，他已经能提前一天完成清单，并在彩排中迅速找到问题。</p>
+          <p>周同学说，社团最珍贵的不是每个人都有很高的演奏水平，而是每个人都能找到可以贡献的位置。不会编曲的人可以负责拍摄，容易紧张的人可以先从后台协作开始，擅长表达的人可以主持，喜欢整理的人可以把曲谱库做得清楚可靠。音乐把大家聚在一起，而共同完成任务让这种相聚有了更深的连接。一次活动的成功从来不是某位“主角”独自完成的，它来自每个环节都有人认真回应。</p>
+          <p>这样的故事在社团里并不稀奇。有人通过每周练习改善了拖延，有人因为第一次上台而敢于在课堂展示中表达自己，也有人在这里交到了跨专业的朋友。我们并不承诺每个人都会成为演奏高手，但愿意一起创造一种经验：在被允许试错的环境中，把小目标一点点完成；在别人需要时伸出手，也坦然接受别人的帮助。若干年后再回想大学生活，也许会记不清某次练习的具体曲目，却会记得那个大家坐在台阶上分一块蛋糕、又一起把最后一个和弦弹齐的夜晚。</p>
+          <p>如果你也有过“想学但怕晚”“喜欢但不敢上台”的时刻，不妨把这里当作一次轻轻的尝试。你不需要先准备好一个完美的自己，只要带着好奇来坐一会儿。社团会为你留一把椅子，也会有人在你数拍数乱时，用一个眼神把你重新带回节拍里。我们期待的不是所有声音一模一样，而是在不同的声音相互靠近时，能够听见属于集体的和声。</p>
+        </div>
+      </div>
+      <a class="back-top" href="#top" aria-label="返回页面顶部">↑ 返回顶部</a>
+    </section>
+
+    <section class="section" id="signup">
+      <div class="section-heading">
+        <div>
+          <p class="section-number">05 / Join Us</p>
+          <h2>下一段旋律，<br>等你来弹</h2>
+        </div>
+        <p class="section-summary">填写下方报名表，让我们更了解你的兴趣与期待。即使暂时没有乐器、完全没有基础，也可以放心报名。</p>
+      </div>
+
+      <div class="signup-intro">
+        <article>
+          <strong>不需要基础</strong>
+          <p>从调音、持琴和第一个和弦开始，公共琴可供首次课程使用。</p>
+        </article>
+        <article>
+          <strong>多种参与方式</strong>
+          <p>弹唱、指弹、合奏、摄影、剪辑与活动策划，都能找到发挥空间。</p>
+        </article>
+        <article>
+          <strong>完整成长路径</strong>
+          <p>基础课堂、小组练习、舞台实践与成果音乐会，陪你循序渐进地成长。</p>
+        </article>
+      </div>
+
+      <div class="prose" style="margin: 0 0 38px;">
+        <p class="lead">报名不是一次需要充分准备的考试，而是告诉我们你愿意从哪里开始。你可以只会听歌，也可以已经练过一段时间；可以希望学会弹唱，也可以更愿意参与摄影、剪辑、文案和活动统筹。社团会根据兴趣方向联系新成员，介绍近期活动，并帮助大家选择适合自己的第一次参与方式。</p>
+        <p>填写姓名是为了在活动和群聊中准确称呼你，性别与出生日期用于了解成员构成及安排适合的活动，手机和邮箱只在发布课程调整、场地变更或报名确认时使用。所有信息仅供社团内部招新与活动联络，不会用于商业推广，也不会未经本人同意向其他组织公开。如果暂时没有常用邮箱，可以填写一个可联系到你的地址，并在后续活动说明中注明更方便的沟通方式。</p>
+        <p>没有乐器的同学不必在报名阶段购买设备。第一次课程会介绍琴的尺寸、音色和预算区间，也会提供公共琴供大家体验；确定长期兴趣之后，再决定是否购买更适合自己的乐器。已经拥有乐器的成员可以带上自己的琴、拨片和变调夹，现场会有成员协助检查音准和基础状态。对音准或节拍暂时没有把握也很正常，我们会在小组练习中从慢速开始，让每个人都有机会听清自己的声音。</p>
+        <p>关于“是否服从活动安排”，我们更希望理解为你是否愿意在报名后关注通知、尊重共同约定的时间，并在确有困难时及时沟通。社团活动以课余时间为前提，不会挤占课程和必要的休息；遇到考试、身体不适或临时冲突，可以提前说明，负责人会帮助调整分工。对场地使用、公共器材归还、拍摄授权和群内交流，大家也需要遵守基本规则，让每个来到现场的人都能安心参与。</p>
+        <p>提交之后，你可以在社团招新群等待确认，也可以先查看活动安排中的公开课日期。入社第一周会安排老成员带你熟悉环境；第一次练习只需要带好奇心，提前十分钟到场即可。我们会从最简单的和弦开始，不要求当天完整演奏一首歌。如果你希望认识新朋友、给大学生活增加一种表达方式，或者只是想在周末听一会儿现场音乐，都欢迎留下报名信息。下一段旋律不需要完美开场，只需要有人愿意坐下来，把第一根弦轻轻拨响。</p>
+      </div>
+
+      <div class="form-shell">
+        <form id="signupForm" action="#signup" method="post">
+          <table class="signup-table">
+            <tbody>
+              <tr>
+                <th scope="row"><label for="name">1. 姓名</label></th>
+                <td><input class="field" id="name" name="name" type="text" autocomplete="name" required placeholder="请输入你的姓名"></td>
+              </tr>
+              <tr>
+                <th scope="row">2. 性别</th>
+                <td>
+                  <div class="choice-group">
+                    <label><input type="radio" name="gender" value="男" required> 男</label>
+                    <label><input type="radio" name="gender" value="女"> 女</label>
+                    <label><input type="radio" name="gender" value="其他"> 其他</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3. 出生日期</th>
+                <td>
+                  <div class="date-fields">
+                    <label><input class="mini-field" id="birthYear" name="birthYear" type="text" inputmode="numeric" maxlength="4" aria-label="出生年份" placeholder="YYYY"> 年</label>
+                    <label><input class="mini-field" id="birthMonth" name="birthMonth" type="text" inputmode="numeric" maxlength="2" aria-label="出生月份" placeholder="MM"> 月</label>
+                    <label><input class="mini-field" id="birthDay" name="birthDay" type="text" inputmode="numeric" maxlength="2" aria-label="出生日期" placeholder="DD"> 日</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">4. 手机与邮箱</th>
+                <td>
+                  <input class="field" id="phone" name="phone" type="text" inputmode="tel" autocomplete="tel" placeholder="手机号码" aria-label="手机号码">
+                  <input class="field" id="email" name="email" type="text" inputmode="email" autocomplete="email" placeholder="电子邮箱" aria-label="电子邮箱" style="margin-top: 10px;">
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">5. 是否有尤克里里基础</th>
+                <td>
+                  <div class="choice-group">
+                    <label><input type="radio" name="hasUkuleleExperience" value="有" required> 有</label>
+                    <label><input type="radio" name="hasUkuleleExperience" value="没有"> 没有</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">6. 兴趣方向</th>
+                <td>
+                  <div class="choice-group">
+                    <label><input type="checkbox" name="interest" value="弹唱"> 弹唱</label>
+                    <label><input type="checkbox" name="interest" value="指弹"> 指弹</label>
+                    <label><input type="checkbox" name="interest" value="乐队合奏"> 乐队合奏</label>
+                    <label><input type="checkbox" name="interest" value="摄影剪辑"> 摄影剪辑</label>
+                    <label><input type="checkbox" name="interest" value="活动策划"> 活动策划</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><label for="grade">7. 年级</label></th>
+                <td>
+                  <select id="grade" name="grade" required>
+                    <option value="" selected disabled>请选择年级</option>
+                    <option value="大一">大一</option>
+                    <option value="大二">大二</option>
+                    <option value="大三">大三</option>
+                    <option value="大四">大四</option>
+                    <option value="研究生">研究生</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><label for="introduction">8. 自我介绍</label></th>
+                <td>
+                  <textarea id="introduction" name="introduction" rows="6" required placeholder="请简单介绍自己、以及加入尤克里里社的理由……"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">9. 是否服从活动安排</th>
+                <td>
+                  <div class="choice-group">
+                    <label><input type="radio" name="followSchedule" value="是" required> 是</label>
+                    <label><input type="radio" name="followSchedule" value="否"> 否</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">10. 提交</th>
+                <td>
+                  <div class="form-actions">
+                    <button class="submit-button" type="submit">提交报名</button>
+                    <button class="reset-button" type="reset">重填信息</button>
+                  </div>
+                  <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+      <a class="back-top" href="#top" aria-label="返回页面顶部">↑ 返回顶部</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>尤克里里社 · 2026 春季招新｜让每一个愿意开始的人，都有自己的节拍</p>
+  </footer>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const musicButton = document.getElementById("musicButton");
+    const musicLabel = document.getElementById("musicLabel");
+
+    function updateMusicButton(isPlaying) {
+      musicButton.classList.toggle("is-playing", isPlaying);
+      musicButton.setAttribute("aria-pressed", String(isPlaying));
+      musicButton.setAttribute("aria-label", isPlaying ? "暂停背景音乐" : "播放背景音乐");
+      musicLabel.textContent = isPlaying ? "暂停背景音乐" : "播放背景音乐";
+    }
+
+    musicButton.addEventListener("click", async () => {
+      if (music.paused) {
+        try {
+          await music.play();
+          updateMusicButton(true);
+        } catch (error) {
+          musicLabel.textContent = "音乐加载失败";
+        }
+      } else {
+        music.pause();
+        updateMusicButton(false);
+      }
+    });
+
+    music.addEventListener("play", () => updateMusicButton(true));
+    music.addEventListener("pause", () => updateMusicButton(false));
+    music.addEventListener("ended", () => updateMusicButton(false));
+    music.addEventListener("error", () => {
+      musicLabel.textContent = "音乐加载失败";
+    });
+
+    const signupForm = document.getElementById("signupForm");
+    const formMessage = document.getElementById("formMessage");
+
+    signupForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!signupForm.reportValidity()) return;
+      formMessage.textContent = "报名信息已填写完成！本静态页面仅用于课程展示，请按课程要求提交。";
+    });
+
+    signupForm.addEventListener("reset", () => {
+      formMessage.textContent = "";
+    });
+  </script>
+</body>
+</html>
