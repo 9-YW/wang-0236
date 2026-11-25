@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <style>
+    .page {
+      display: inline-block;
+      background-color: #F0E8FF;
+      box-shadow: 0 0 30px rgba(80, 58, 35, 0.25);
+      text-align: left;
+      max-width: 720px;
+    }
+
+    body {
+      margin: 0;
+      padding: 36px 18px;
+      color: #3f3159;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(226, 205, 255, 0.78), transparent 24rem),
+        radial-gradient(circle at 88% 78%, rgba(155, 127, 205, 0.3), transparent 28rem),
+        linear-gradient(145deg, #faf7ff, #e8dcf8);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.75;
+      text-align: center;
+    }
+
+    .hero {
+      padding: 56px 38px 42px;
+      color: #fffaff;
+      background:
+        radial-gradient(circle at 84% 24%, rgba(234, 210, 255, 0.5), transparent 12rem),
+        linear-gradient(135deg, #32254d, #5b4385 58%, #9377bd);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      color: inherit;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.3;
+    }
+
+    h1 {
+      margin-bottom: 0;
+      font-size: 42px;
+      letter-spacing: 2px;
+      text-shadow: 0 5px 20px rgba(44, 28, 69, 0.32);
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin: 20px 0 0;
+      color: rgba(255, 250, 255, 0.86);
+      font-size: 16px;
+    }
+
+    .section {
+      padding: 38px;
+      border-top: 1px solid rgba(105, 78, 151, 0.16);
+    }
+
+    .section h2 {
+      margin-bottom: 18px;
+      color: #60458c;
+      font-size: 28px;
+    }
+
+    .section h3 {
+      margin-bottom: 16px;
+      color: #60458c;
+      font-size: 23px;
+    }
+
+    .section p {
+      margin: 0 0 16px;
+      color: #514563;
+    }
+
+    p#intro {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 5px solid #9c72cf;
+      border-radius: 0 14px 14px 0;
+      color: #5b337f;
+      background: #f3e8ff;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    p::first-letter {
+      color: #8351b7;
+      font-size: 1.35em;
+    }
+
+    div::first-line {
+      font-weight: 650;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 15px;
+    }
+
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    th {
+      padding: 14px 12px;
+      color: #fffaff;
+      background: #65488e;
+      text-align: left;
+    }
+
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(101, 72, 142, 0.15);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    tr:nth-child(even) td {
+      background: rgba(155, 127, 205, 0.1);
+    }
+
+    div table a {
+      color: #7546a3;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 4px;
+    }
+
+    .links {
+      padding: 34px 38px;
+      border-top: 1px solid rgba(105, 78, 151, 0.16);
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    a:link {
+      color: #64478f;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: #765c99;
+    }
+
+    a:hover {
+      color: #9b5fbc;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: #56306f;
+    }
+
+    a.red, a.blue {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      line-height: 1.3;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a.red {
+      color: #fffaff;
+      background: #9c5c7c;
+      box-shadow: 0 9px 22px rgba(111, 62, 98, 0.22);
+    }
+
+    a.blue {
+      color: #fffaff;
+      background: #6654a3;
+      box-shadow: 0 9px 22px rgba(67, 51, 117, 0.24);
+    }
+
+    a.red:hover, a.blue:hover {
+      color: #fff;
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .notice {
+      padding: 34px 38px 40px;
+      color: #fbf8ff;
+      background:
+        linear-gradient(rgba(57, 39, 81, 0.98), rgba(57, 39, 81, 0.98)),
+        repeating-linear-gradient(45deg, transparent 0 10px, rgba(255, 255, 255, 0.08) 10px 11px);
+    }
+
+    .notice h4 {
+      margin-bottom: 14px;
+      color: #e9d4ff;
+      font-size: 20px;
+    }
+
+    .notice p {
+      margin: 8px 0;
+      color: rgba(251, 248, 255, 0.84);
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 14px;
+      }
+
+      .hero {
+        padding: 42px 22px 34px;
+      }
+
+      h1 {
+        font-size: 31px;
+        letter-spacing: 1px;
+      }
+
+      .section, .links, .notice {
+        padding-right: 22px;
+        padding-left: 22px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        min-width: 620px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <h1>原创小说交流会<br>Writer's Salon · 打击乐社招新</h1>
+      <p>当鼓点遇见文字，舞台便有了另一层回声。这里欢迎每一位愿意创作、朗读和分享故事的新成员。</p>
+    </div>
+
+    <div class="section">
+      <h2 id="intro">把鼓点写进故事，让创作拥有自己的节奏</h2>
+      <p>打击乐社每月举办原创小说交流会，成员可以带着自己的短篇小说、随笔片段或故事构思来到排练室。我们从鼓点的强弱与停顿谈到叙事节奏，在交流中寻找文字的呼吸感，也为社团演出共同创作幕后故事。</p>
+      <p>新学期招新不设写作经验门槛。你可以提交一篇小说梗概、一个故事开头，或者只带着想写的故事前来；中文、英文或其他语言的创作都欢迎。社团会安排共读、互评和现场朗读，让每份作品都得到认真回应。</p>
+      <p id="intro">重要提示：作品分享以尊重原创为前提，公开朗读前请取得作者同意。正式发表经历不是加入社团的必要条件，持续创作、坦诚交流和愿意倾听才是 Writer's Salon 最珍视的节奏。</p>
+    </div>
+
+    <div class="section">
+      <h3>本期原创作品分享与报名信息</h3>
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th scope="col">时间</th>
+            <th scope="col">分享主题</th>
+            <th scope="col">作者 / 成员</th>
+            <th scope="col">作品类型</th>
+            <th scope="col">招募席位</th>
+            <th scope="col">作品详情</th>
+          </tr>
+          <tr>
+            <td>周三 19:00</td>
+            <td>把城市夜色写成章节</td>
+            <td>林澈 · 鼓组</td>
+            <td>城市小说</td>
+            <td>3 席</td>
+            <td><a href="#intro">阅读创作提示</a></td>
+          </tr>
+          <tr>
+            <td>周五 19:30</td>
+            <td>鼓点与叙事的呼吸</td>
+            <td>叶青 · 手鼓</td>
+            <td>现实小说</td>
+            <td>2 席</td>
+            <td><a href="#intro">阅读创作提示</a></td>
+          </tr>
+          <tr>
+            <td>周六 18:30</td>
+            <td>小剧场的共同写作</td>
+            <td>周予安 · 打击乐</td>
+            <td>奇幻小说</td>
+            <td>4 席</td>
+            <td><a href="#intro">阅读创作提示</a></td>
+          </tr>
+          <tr>
+            <td>周日 19:00</td>
+            <td>即兴节奏里的谜题</td>
+            <td>ShadowInk · 爵士鼓</td>
+            <td>悬疑小说</td>
+            <td>1 席</td>
+            <td><a href="#intro">阅读创作提示</a></td>
+          </tr>
+          <tr>
+            <td>周日 20:00</td>
+            <td>原创片段共读会</td>
+            <td>打击乐社全体</td>
+            <td>故事与随笔</td>
+            <td>不限</td>
+            <td><a href="#intro">阅读创作提示</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="links">
+      <div class="link-row">
+        <a class="red" href="https://hongchenwusdnu.github.io/bookstore/job4.html">翻阅往期小说活动档案</a>
+        <a class="blue" href="https://9-yw.github.io/wang-0236/wang-0236-work2.html">咨询社团创作与报名详情</a>
+      </div>
+    </div>
+
+    <div class="notice">
+      <h4>创作公告</h4>
+      <p>公告一：本周原创小说交流会请在开场前十分钟到大学生活动中心二层集合。</p>
+      <p>公告二：公用手鼓数量有限，有乐器的小伙伴可以优先携带自己的乐器。<br>现场也会准备练习垫和基础鼓槌。</p>
+      <p>公告三：请为现场朗读准备一份 800 字以内的原创作品节选，投稿前请确认内容可公开分享。</p>
+    </div>
+  </div>
+</body>
+</html>
